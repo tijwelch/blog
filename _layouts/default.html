@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ site.title }}</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      line-height: 1.7;
+      color: #1a1a1a;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+    h1 { font-size: 2rem; margin-bottom: 0.25rem; letter-spacing: -0.02em; }
+    .site-desc { color: #888; margin-bottom: 2.5rem; font-size: 0.95rem; }
+    .post-list { list-style: none; }
+    .post-list li { margin-bottom: 1.5rem; }
+    .post-list a { text-decoration: none; color: #1a1a1a; font-size: 1.15rem; font-weight: 600; }
+    .post-list a:hover { text-decoration: underline; }
+    .post-date { color: #888; font-size: 0.85rem; display: block; }
+  </style>
+</head>
+<body>
+  <h1>{{ site.title }}</h1>
+  <p class="site-desc">{{ site.description }}</p>
+  {{ content }}
+</body>
+</html>
