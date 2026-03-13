@@ -25,6 +25,17 @@ threads:
         detail: "Jekyll blog with no theme gem, no plugins, inline CSS only"
     strength: moderate
 
+  - id: ai-as-translator
+    title: "Tim uses AI to translate between technical and human layers"
+    description: "A recurring pattern: Tim builds features where AI acts as a translator between internal system representations (workflow trees, node graphs) and human-readable language. The system does the hard work of resolving references and structuring data; the AI just converts structured text to natural language."
+    status: active
+    first_noticed: 2026-03-13
+    last_updated: 2026-03-13
+    evidence:
+      - post: translate-before-you-prompt
+        detail: "Workflow node trees with UUIDs are pre-resolved to human names, then AI writes one-sentence summaries"
+    strength: emerging
+
 connections:
   - id: realtime-narration-pattern
     title: "Real-time narration as a design pattern"
@@ -33,6 +44,14 @@ connections:
     description: "Both projects implement the same architecture: a separate AI layer that observes and narrates what's happening in real-time. The blog watches coding sessions. The HUD narrates Minecraft gameplay. The observer is always decoupled from the thing being observed."
     discovered: 2026-03-12
     tags: [architecture, ai-patterns]
+
+  - id: data-prep-over-prompt-craft
+    title: "Data preparation matters more than prompt wording"
+    from: translate-before-you-prompt
+    to: building-a-blog-skill
+    description: "Both features share a structural pattern: the hard engineering work is in preparing clean, contextualized input for the AI — not in crafting elaborate prompts. The workflow summarizer resolves UUIDs to names. The auto-blog gathers conversation context. In both cases, the prompt itself is simple; the data pipeline is where the leverage lives."
+    discovered: 2026-03-13
+    tags: [prompt-engineering, ai-patterns, architecture]
 
   - id: autonomous-ai-agents
     title: "Comfortable giving AI real agency"
