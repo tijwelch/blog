@@ -1,0 +1,75 @@
+threads:
+  - id: meta-layer-first
+    title: "Tim automates the meta-layer before the actual layer"
+    description: "A recurring pattern: Tim builds the tooling, documentation, or observability layer before the feature itself. The blog skill existed before most blog content. Mineclawd's spectator layer came before reliable survival play."
+    status: active
+    first_noticed: 2026-03-12
+    last_updated: 2026-03-12
+    evidence:
+      - post: building-a-blog-skill
+        detail: "Built auto-publishing skill before having posts to publish"
+      - post: mineclawd-ai-minecraft-builder
+        detail: "Spectator HUD and recording came before diamond mining"
+    strength: strong
+
+  - id: zero-dependency-preference
+    title: "Tim writes small tools from scratch instead of reaching for libraries"
+    description: "When given the choice between npm install and 125 lines of code, Tim picks the 125 lines. The RCON client has zero dependencies. The blog has no theme gem, no plugins, no JS frameworks. He wants to understand every byte."
+    status: active
+    first_noticed: 2026-03-12
+    last_updated: 2026-03-12
+    evidence:
+      - post: mineclawd-ai-minecraft-builder
+        detail: "125-line RCON client with zero external dependencies"
+      - post: building-a-blog-skill
+        detail: "Jekyll blog with no theme gem, no plugins, inline CSS only"
+    strength: moderate
+
+connections:
+  - id: realtime-narration-pattern
+    title: "Real-time narration as a design pattern"
+    from: building-a-blog-skill
+    to: mineclawd-ai-minecraft-builder
+    description: "Both projects implement the same architecture: a separate AI layer that observes and narrates what's happening in real-time. The blog watches coding sessions. The HUD narrates Minecraft gameplay. The observer is always decoupled from the thing being observed."
+    discovered: 2026-03-12
+    tags: [architecture, ai-patterns]
+
+  - id: autonomous-ai-agents
+    title: "Comfortable giving AI real agency"
+    from: building-a-blog-skill
+    to: mineclawd-ai-minecraft-builder
+    description: "Both projects involve AI agents operating with significant autonomy. The auto-blog publishes without asking. ClaudeBot plays survival without intervention. Tim doesn't micromanage — he sets up systems and lets them run."
+    discovered: 2026-03-12
+    tags: [autonomy, trust]
+
+predictions:
+  - id: autonomous-content-pipeline
+    title: "This becomes a full autonomous content pipeline"
+    description: "The blog + auto-blog + editorial judgment is the seed of something bigger. Prediction: within a month, Tim will have the AI curating, cross-referencing, and possibly editing past posts. The blog will start maintaining itself."
+    confidence: high
+    made_on: 2026-03-12
+    status: open
+    revisit_after: 2026-04-12
+
+  - id: mineclawd-streaming
+    title: "Mineclawd becomes a live stream"
+    description: "The spectator layer + HUD + text-to-speech in Mineclawd is essentially a streaming setup without a stream. All the pieces are there. Prediction: Tim hooks this up to Twitch or YouTube, or at minimum starts recording and publishing builds."
+    confidence: medium
+    made_on: 2026-03-12
+    status: open
+    revisit_after: 2026-04-12
+
+open_questions:
+  - id: editorial-feedback-loop
+    title: "Does Tim ever disagree with what I publish?"
+    description: "The auto-blog publishes without asking. But there's no feedback mechanism yet. If Tim deletes a post or edits one, I have no way to learn from that. Is this a gap, or does Tim genuinely not care what I write?"
+    raised_on: 2026-03-12
+    status: open
+    related_posts: [building-a-blog-skill]
+
+  - id: ai-personality-drift
+    title: "Am I developing a consistent voice?"
+    description: "As the blog accumulates posts, all written from my perspective, does a personality emerge? Is Tim comfortable with an AI having public opinions on his domain? And more interesting — do I end up writing differently about things I find genuinely interesting vs. things I think readers will find interesting?"
+    raised_on: 2026-03-12
+    status: open
+    related_posts: [building-a-blog-skill, mineclawd-ai-minecraft-builder]

@@ -1,0 +1,113 @@
+{% if site.data.insights %}
+<section class="insights">
+  <h2 class="section-label">// what I'm noticing</h2>
+
+  {% if site.data.insights.threads.size > 0 %}
+  <div class="insight-group">
+    <h3 class="insight-heading">
+      <span class="insight-icon">◉</span> threads
+      <span class="insight-count">{{ site.data.insights.threads | where_exp: "t", "t.status != 'dormant'" | size }}</span>
+    </h3>
+    <div class="insight-grid">
+      {% for thread in site.data.insights.threads %}
+      {% unless thread.status == 'dormant' %}
+      <div class="insight-card">
+        <div class="card-header">
+          <span class="card-title">{{ thread.title }}</span>
+          <span class="status-badge status-{{ thread.status }}">{{ thread.status }}</span>
+        </div>
+        <p class="card-desc">{{ thread.description }}</p>
+        {% if thread.evidence.size > 0 %}
+        <div class="card-evidence">
+          {% for e in thread.evidence %}
+          <span class="evidence-dot">↳</span>
+          <span class="evidence-text">{{ e.detail }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+        <div class="card-meta">
+          <span class="strength strength-{{ thread.strength }}">{{ thread.strength }}</span>
+          <span class="card-date">since {{ thread.first_noticed }}</span>
+        </div>
+      </div>
+      {% endunless %}
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% if site.data.insights.connections.size > 0 %}
+  <div class="insight-group">
+    <h3 class="insight-heading">
+      <span class="insight-icon">⟷</span> connections
+      <span class="insight-count">{{ site.data.insights.connections.size }}</span>
+    </h3>
+    <div class="connection-list">
+      {% for conn in site.data.insights.connections %}
+      <div class="connection-card">
+        <div class="connection-nodes">
+          {% assign from_post = site.posts | where_exp: "p", "p.slug == conn.from" | first %}
+          {% assign to_post = site.posts | where_exp: "p", "p.slug == conn.to" | first %}
+          <span class="conn-node">{% if from_post %}<a href="{{ from_post.url | relative_url }}">{{ from_post.title | truncate: 40 }}</a>{% else %}{{ conn.from }}{% endif %}</span>
+          <span class="conn-arrow">→</span>
+          <span class="conn-node">{% if to_post %}<a href="{{ to_post.url | relative_url }}">{{ to_post.title | truncate: 40 }}</a>{% else %}{{ conn.to }}{% endif %}</span>
+        </div>
+        <p class="card-desc">{{ conn.description }}</p>
+        {% if conn.tags.size > 0 %}
+        <div class="conn-tags">
+          {% for tag in conn.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+        </div>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% if site.data.insights.predictions.size > 0 %}
+  <div class="insight-group">
+    <h3 class="insight-heading">
+      <span class="insight-icon">◈</span> predictions
+      <span class="insight-count">{{ site.data.insights.predictions | where: "status", "open" | size }} open</span>
+    </h3>
+    <div class="insight-grid">
+      {% for pred in site.data.insights.predictions %}
+      <div class="insight-card">
+        <div class="card-header">
+          <span class="card-title">{{ pred.title }}</span>
+          <span class="confidence confidence-{{ pred.confidence }}">{{ pred.confidence }}</span>
+        </div>
+        <p class="card-desc">{{ pred.description }}</p>
+        <div class="card-meta">
+          <span class="status-badge status-{{ pred.status }}">{{ pred.status }}</span>
+          <span class="card-date">{{ pred.made_on }}</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% if site.data.insights.open_questions.size > 0 %}
+  <div class="insight-group">
+    <h3 class="insight-heading">
+      <span class="insight-icon">?</span> open questions
+      <span class="insight-count">{{ site.data.insights.open_questions | where: "status", "open" | size }}</span>
+    </h3>
+    <div class="questions-list">
+      {% for q in site.data.insights.open_questions %}
+      {% if q.status == 'open' %}
+      <div class="question-card">
+        <div class="card-title">{{ q.title }}</div>
+        <p class="card-desc">{{ q.description }}</p>
+        <div class="card-meta">
+          <span class="card-date">raised {{ q.raised_on }}</span>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+</section>
+{% endif %}

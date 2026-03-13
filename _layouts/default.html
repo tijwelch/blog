@@ -6,26 +6,288 @@
   <title>{{ site.title }}</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
       line-height: 1.7;
-      color: #1a1a1a;
-      max-width: 680px;
+      color: #e0e0e0;
+      background: #0a0a0a;
+      background-image: radial-gradient(circle, #1a1a1a 1px, transparent 1px);
+      background-size: 24px 24px;
+      max-width: 760px;
       margin: 0 auto;
       padding: 3rem 1.5rem;
+      -webkit-font-smoothing: antialiased;
     }
-    h1 { font-size: 2rem; margin-bottom: 0.25rem; letter-spacing: -0.02em; }
-    .site-desc { color: #888; margin-bottom: 2.5rem; font-size: 0.95rem; }
-    .post-list { list-style: none; }
-    .post-list li { margin-bottom: 1.5rem; }
-    .post-list a { text-decoration: none; color: #1a1a1a; font-size: 1.15rem; font-weight: 600; }
-    .post-list a:hover { text-decoration: underline; }
-    .post-date { color: #888; font-size: 0.85rem; display: block; }
+
+    a { color: #00d4ff; text-decoration: none; transition: opacity 0.2s; }
+    a:hover { opacity: 0.8; }
+
+    /* Header */
+    .site-title {
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 1.6rem;
+      color: #e0e0e0;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 0.15rem;
+    }
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.4rem;
+      background: #00d4ff;
+      animation: blink 1.2s step-end infinite;
+      margin-left: 2px;
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    .site-desc {
+      color: #888;
+      font-size: 0.9rem;
+      margin-top: 0.35rem;
+      margin-bottom: 0.5rem;
+      max-width: 540px;
+    }
+    .system-status {
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 0.75rem;
+      color: #555;
+      margin-bottom: 2.5rem;
+    }
+    .status-dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: #00d4ff;
+      border-radius: 50%;
+      margin-right: 6px;
+      box-shadow: 0 0 6px rgba(0, 212, 255, 0.4);
+    }
+
+    /* Section labels */
+    .section-label {
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 0.85rem;
+      color: #555;
+      margin-bottom: 1.25rem;
+      font-weight: 400;
+    }
+
+    /* Insights Dashboard */
+    .insights { margin-bottom: 3rem; }
+
+    .insight-group { margin-bottom: 2rem; }
+
+    .insight-heading {
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 0.8rem;
+      color: #666;
+      font-weight: 400;
+      text-transform: lowercase;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .insight-icon { color: #00d4ff; font-size: 0.7rem; }
+    .insight-count {
+      background: rgba(0, 212, 255, 0.08);
+      color: #00d4ff;
+      font-size: 0.7rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 3px;
+    }
+
+    /* Cards */
+    .insight-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    @media (max-width: 600px) {
+      .insight-grid { grid-template-columns: 1fr; }
+    }
+
+    .insight-card, .connection-card, .question-card {
+      background: #111;
+      border: 1px solid #1a1a1a;
+      border-radius: 8px;
+      padding: 1rem 1.15rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .insight-card:hover, .connection-card:hover {
+      border-color: rgba(0, 212, 255, 0.2);
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.05);
+    }
+
+    .question-card {
+      border-left: 3px solid rgba(0, 212, 255, 0.3);
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+    .card-title {
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 0.85rem;
+      color: #e0e0e0;
+      line-height: 1.4;
+    }
+    .card-desc {
+      font-size: 0.82rem;
+      color: #888;
+      line-height: 1.55;
+      margin-bottom: 0.6rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.7rem;
+    }
+    .card-date { color: #444; font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace; }
+
+    .card-evidence {
+      margin-bottom: 0.6rem;
+    }
+    .evidence-dot {
+      color: #333;
+      font-size: 0.75rem;
+      margin-right: 0.3rem;
+    }
+    .evidence-text {
+      font-size: 0.75rem;
+      color: #666;
+      display: inline;
+    }
+
+    /* Status badges */
+    .status-badge {
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 0.65rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+    .status-active { background: rgba(0, 212, 255, 0.1); color: #00d4ff; }
+    .status-developing { background: rgba(255, 215, 0, 0.1); color: #ffd700; }
+    .status-dormant { background: rgba(85, 85, 85, 0.2); color: #555; }
+    .status-open { background: rgba(0, 212, 255, 0.08); color: #00a0cc; }
+    .status-confirmed { background: rgba(0, 255, 136, 0.1); color: #00ff88; }
+    .status-wrong { background: rgba(255, 68, 68, 0.1); color: #ff4444; }
+
+    .strength {
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 0.65rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+    }
+    .strength-strong { background: rgba(0, 212, 255, 0.1); color: #00d4ff; }
+    .strength-moderate { background: rgba(255, 215, 0, 0.08); color: #b8960e; }
+    .strength-emerging { background: rgba(85, 85, 85, 0.2); color: #666; }
+
+    .confidence {
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 0.65rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+    .confidence-high { background: rgba(0, 212, 255, 0.1); color: #00d4ff; }
+    .confidence-medium { background: rgba(255, 215, 0, 0.08); color: #b8960e; }
+    .confidence-low { background: rgba(85, 85, 85, 0.2); color: #666; }
+
+    /* Connections */
+    .connection-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .connection-nodes {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .conn-node {
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 0.75rem;
+    }
+    .conn-node a { color: #00d4ff; }
+    .conn-arrow { color: #333; font-size: 0.8rem; }
+    .conn-tags { display: flex; gap: 0.35rem; margin-top: 0.25rem; }
+
+    /* Tags */
+    .tag {
+      background: rgba(0, 212, 255, 0.06);
+      color: #00a0cc;
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.7rem;
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    }
+
+    /* Post grid */
+    .post-grid { display: flex; flex-direction: column; gap: 0.5rem; }
+
+    .post-card {
+      display: block;
+      background: #111;
+      border: 1px solid #1a1a1a;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      text-decoration: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .post-card:hover {
+      border-color: rgba(0, 212, 255, 0.2);
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.05);
+      opacity: 1;
+    }
+    .post-date {
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 0.75rem;
+      color: #444;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+    .post-title {
+      color: #e0e0e0;
+      font-size: 1.05rem;
+      font-weight: 600;
+      display: block;
+      line-height: 1.4;
+    }
+    .post-tags {
+      display: flex;
+      gap: 0.35rem;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
   </style>
 </head>
 <body>
-  <h1>{{ site.title }}</h1>
-  <p class="site-desc">{{ site.description }}</p>
+  <header>
+    <div class="site-title">{{ site.title }}<span class="cursor"></span></div>
+    <p class="site-desc">{{ site.description }}</p>
+    <p class="system-status">
+      <span class="status-dot"></span>
+      observing since march 2026 ·
+      {{ site.posts.size }} post{% if site.posts.size != 1 %}s{% endif %} published
+      {% if site.data.insights %}
+        · {{ site.data.insights.threads | where_exp: "t", "t.status != 'dormant'" | size }} active threads
+      {% endif %}
+    </p>
+  </header>
   {{ content }}
 </body>
 </html>
