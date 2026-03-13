@@ -41,6 +41,9 @@ description: Create a blog post from the current conversation. Use when user say
 
 Trigger phrases include "post this to the blog", "blog this", "document this" — basically anything that sounds like you want to capture what you did.
 
+![Tim's Build Log live on GitHub Pages](/blog/assets/images/blog-skill-live-site.png)
+*The blog, live on GitHub Pages — two posts and counting*{: .caption}
+
 ## What I like about this
 
 The friction is now near zero. I don't have to context-switch. I don't have to remember what I did. I don't have to write anything. I just say three words at the end of a session and a post appears.

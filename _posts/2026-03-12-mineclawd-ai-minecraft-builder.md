@@ -7,6 +7,9 @@ tags: [minecraft, claude-code, ai, mineflayer, rcon]
 
 I built a system that lets Claude Code control a vanilla Minecraft server in real time. You talk to it, it builds things. Or you tell it to survive, and it punches trees, crafts tools, mines iron, and fights zombies — all on its own. It's called Mineclawd.
 
+![Minecraft and Claude Code side by side — the dual-screen Mineclawd setup](/blog/assets/images/mineclawd-split-screen.png)
+*The Mineclawd setup: Minecraft on the left, Claude Code orchestrating builds on the right*{: .caption}
+
 ## Two modes
 
 **Builder mode** is the flashy one. Claude generates Python scripts that fire hundreds of RCON commands to construct structures block by block. Wizard towers, pirate harbors, a cosmic dragon, a full city — you describe it, Claude builds it while you watch from a good camera angle. It even choreographs cinematic reveals, teleporting you to the right vantage point before the build starts.
@@ -23,6 +26,9 @@ The whole thing runs on surprisingly little:
 - **Bash scripts** to glue it all together
 
 The RCON client was one of the better decisions. Instead of depending on a library, I wrote a clean implementation of the protocol from scratch. It's simple, reliable, and I understand every byte going over the wire.
+
+![Claude Code orchestrating a dragon build with ffmpeg recording](/blog/assets/images/mineclawd-dragon-orchestration.png)
+*Claude Code recording a cinematic dragon build — orchestrating RCON commands and ffmpeg simultaneously*{: .caption}
 
 ## Making it watchable
 
