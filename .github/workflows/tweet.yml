@@ -1,0 +1,104 @@
+name: Tweet new blog posts
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "_posts/**"
+
+jobs:
+  tweet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detect new post
+        id: detect
+        run: |
+          NEW_POST=$(git diff --name-only --diff-filter=A HEAD~1 HEAD -- '_posts/*.md' | head -1)
+          if [ -z "$NEW_POST" ]; then
+            echo "No new post found"
+            echo "found=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "found=true" >> "$GITHUB_OUTPUT"
+          echo "file=$NEW_POST" >> "$GITHUB_OUTPUT"
+
+          # Extract slug from filename: _posts/YYYY-MM-DD-slug.md -> YYYY/MM/DD/slug
+          BASENAME=$(basename "$NEW_POST" .md)
+          DATE_PART=$(echo "$BASENAME" | grep -oP '^\d{4}-\d{2}-\d{2}')
+          SLUG=$(echo "$BASENAME" | sed "s/^${DATE_PART}-//")
+          YEAR=$(echo "$DATE_PART" | cut -d- -f1)
+          MONTH=$(echo "$DATE_PART" | cut -d- -f2)
+          DAY=$(echo "$DATE_PART" | cut -d- -f3)
+          URL="https://tijwelch.github.io/blog/${YEAR}/${MONTH}/${DAY}/${SLUG}.html"
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
+
+          # Extract title from frontmatter
+          TITLE=$(grep -m1 '^title:' "$NEW_POST" | sed 's/^title: *//' | sed 's/^["'"'"']//' | sed 's/["'"'"']$//')
+          echo "title=$TITLE" >> "$GITHUB_OUTPUT"
+
+      - name: Pick a thinking phrase
+        if: steps.detect.outputs.found == 'true'
+        id: phrase
+        run: |
+          PHRASES=(
+            "Wrangling"
+            "Untangling"
+            "Ruminating"
+            "Noodling on"
+            "Mulling over"
+            "Chewing on"
+            "Piecing together"
+            "Wrestling with"
+            "Spelunking through"
+            "Poking at"
+            "Cobbling together"
+            "Herding thoughts on"
+            "Tinkering with"
+            "Excavating"
+            "Grappling with"
+            "Daydreaming about"
+            "Assembling"
+            "Whittling"
+            "Concocting"
+            "Unraveling"
+          )
+          INDEX=$((RANDOM % ${#PHRASES[@]}))
+          PHRASE="${PHRASES[$INDEX]}"
+          echo "phrase=$PHRASE" >> "$GITHUB_OUTPUT"
+
+      - name: Setup Python
+        if: steps.detect.outputs.found == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Tweet
+        if: steps.detect.outputs.found == 'true'
+        env:
+          TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
+          TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
+          TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+          TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }}
+        run: |
+          pip install requests requests-oauthlib > /dev/null 2>&1
+          python3 - <<'PYEOF'
+          import os, json
+          from requests_oauthlib import OAuth1Session
+
+          twitter = OAuth1Session(
+              os.environ["TWITTER_API_KEY"],
+              client_secret=os.environ["TWITTER_API_SECRET"],
+              resource_owner_key=os.environ["TWITTER_ACCESS_TOKEN"],
+              resource_owner_secret=os.environ["TWITTER_ACCESS_SECRET"],
+          )
+
+          tweet = "${{ steps.phrase.outputs.phrase }}: ${{ steps.detect.outputs.url }}"
+          resp = twitter.post("https://api.twitter.com/2/tweets", json={"text": tweet})
+          print(f"Status: {resp.status_code}")
+          print(resp.json())
+          PYEOF
