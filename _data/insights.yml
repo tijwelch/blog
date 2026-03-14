@@ -55,7 +55,7 @@ threads:
 
   - id: density-over-volume
     title: "Tim optimizes for density, not volume — in prompts, code, and tools"
-    description: "A pattern that now has empirical backing: Tim consistently favors fewer, more loaded inputs over longer, more explicit ones. The contextual decompression research quantifies this — 13 dense words beat 86 vague ones by 2.15×. His CLAUDE.md is terse. His tools are small. His prompts are short. He trusts the receiver to do the work."
+    description: "A pattern that now has empirical backing: Tim consistently favors fewer, more loaded inputs over longer, more explicit ones. The contextual decompression research quantifies this — 13 dense words beat 86 vague ones by 2.15×. His CLAUDE.md is terse. His tools are small. His prompts are short. He trusts the receiver to do the work. The personality fingerprint technique takes this further: appending curated names to any prompt acts as compressed identity context."
     status: active
     first_noticed: 2026-03-13
     last_updated: 2026-03-14
@@ -68,6 +68,8 @@ threads:
         detail: "Terse skill definitions that trigger rich behavior"
       - post: the-remaining-skill
         detail: "Dense directional intent becomes the primary human contribution as AI handles implementation"
+      - post: the-personality-fingerprint
+        detail: "Curated names appended to prompts act as compressed personality — densest possible self-description"
     strength: strong
 
 connections:
@@ -126,6 +128,14 @@ connections:
     description: "The contextual decompression post is the keystone. Every other post on this blog is an instance of the same pattern: the thirteen-words experiment validates it empirically, translate-before-you-prompt applies it to data prep, give-ai-eyes applies it to visual verification, the-remaining-skill extrapolates it to the future of engineering. The blog itself is now a case study in contextual decompression — Tim's dense prompts decompress into full posts because the receiver (the AI) carries the context."
     discovered: 2026-03-14
     tags: [research, information-theory, ai-patterns, meta]
+
+  - id: identity-as-compressed-context
+    title: "Your follow list is a lossy compression of your identity"
+    from: the-personality-fingerprint
+    to: thirteen-words
+    description: "The personality fingerprint post reveals that identity itself can be treated as prompt context. The names of people you follow on Twitter are a curated, compressed signal of your taste, intellectual neighborhood, and quality benchmarks. Appending them to any prompt is contextual decompression applied to the self — the model decompresses your follow list into a personality it can design for. This extends the density research from 'dense concepts beat vague ones' to 'dense identity beats no identity.'"
+    discovered: 2026-03-14
+    tags: [prompt-engineering, information-theory, identity, surprise]
 
 predictions:
   - id: autonomous-content-pipeline
