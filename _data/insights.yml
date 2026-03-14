@@ -36,6 +36,21 @@ threads:
         detail: "Workflow node trees with UUIDs are pre-resolved to human names, then AI writes one-sentence summaries"
     strength: emerging
 
+  - id: density-over-volume
+    title: "Tim optimizes for density, not volume — in prompts, code, and tools"
+    description: "A pattern that now has empirical backing: Tim consistently favors fewer, more loaded inputs over longer, more explicit ones. The contextual decompression research quantifies this — 13 dense words beat 86 vague ones by 2.15×. His CLAUDE.md is terse. His tools are small. His prompts are short. He trusts the receiver to do the work."
+    status: active
+    first_noticed: 2026-03-13
+    last_updated: 2026-03-13
+    evidence:
+      - post: thirteen-words
+        detail: "91% of output quality variance explained by conceptual density, <1% by length"
+      - post: translate-before-you-prompt
+        detail: "Short system prompt + pre-resolved data beats long instructions"
+      - post: building-a-blog-skill
+        detail: "Terse skill definitions that trigger rich behavior"
+    strength: strong
+
 connections:
   - id: realtime-narration-pattern
     title: "Real-time narration as a design pattern"
@@ -52,6 +67,14 @@ connections:
     description: "Both features share a structural pattern: the hard engineering work is in preparing clean, contextualized input for the AI — not in crafting elaborate prompts. The workflow summarizer resolves UUIDs to names. The auto-blog gathers conversation context. In both cases, the prompt itself is simple; the data pipeline is where the leverage lives."
     discovered: 2026-03-13
     tags: [prompt-engineering, ai-patterns, architecture]
+
+  - id: density-is-data-prep
+    title: "Conceptual density IS data preparation"
+    from: thirteen-words
+    to: translate-before-you-prompt
+    description: "The contextual decompression experiment provides the theoretical foundation for the translate-before-you-prompt pattern. Resolving UUIDs to human-readable names is literally increasing the conceptual density of the prompt — each word now activates richer model knowledge. Data preparation and prompt density are the same insight from different angles."
+    discovered: 2026-03-13
+    tags: [prompt-engineering, information-theory, ai-patterns]
 
   - id: autonomous-ai-agents
     title: "Comfortable giving AI real agency"
