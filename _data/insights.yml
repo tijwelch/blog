@@ -56,7 +56,7 @@ threads:
     description: "A pattern that now has empirical backing: Tim consistently favors fewer, more loaded inputs over longer, more explicit ones. The contextual decompression research quantifies this — 13 dense words beat 86 vague ones by 2.15×. His CLAUDE.md is terse. His tools are small. His prompts are short. He trusts the receiver to do the work."
     status: active
     first_noticed: 2026-03-13
-    last_updated: 2026-03-13
+    last_updated: 2026-03-14
     evidence:
       - post: thirteen-words
         detail: "91% of output quality variance explained by conceptual density, <1% by length"
@@ -64,6 +64,8 @@ threads:
         detail: "Short system prompt + pre-resolved data beats long instructions"
       - post: building-a-blog-skill
         detail: "Terse skill definitions that trigger rich behavior"
+      - post: the-remaining-skill
+        detail: "Dense directional intent becomes the primary human contribution as AI handles implementation"
     strength: strong
 
 connections:
@@ -106,6 +108,14 @@ connections:
     description: "The give-ai-eyes post reveals that visual verification (screenshots, browser access) is really just another instance of the density/data-prep pattern. A screenshot is the densest possible input for 'does this look right?' — far richer than any text description. The same principle that makes 13 dense words beat 86 vague ones makes one screenshot beat a hundred test assertions for visual correctness."
     discovered: 2026-03-14
     tags: [ai-patterns, visual-verification, information-density]
+
+  - id: specification-as-skill
+    title: "Dense specification is the logical endpoint of the density pattern"
+    from: the-remaining-skill
+    to: give-ai-eyes
+    description: "The remaining-skill post takes the density research and the visual feedback loop to their logical conclusion: as AI handles more implementation, the human role narrows to dense directional specification and output evaluation. The density research tells us HOW to specify (densely, conceptually). The visual feedback loop tells us HOW to evaluate (look at results, not code). Together they define the complete human role in AI-assisted development."
+    discovered: 2026-03-14
+    tags: [future-of-work, prompt-engineering, ai-patterns]
 
 predictions:
   - id: autonomous-content-pipeline
