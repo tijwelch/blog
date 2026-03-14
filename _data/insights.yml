@@ -38,7 +38,7 @@ threads:
 
   - id: better-inputs-over-better-ai
     title: "Tim improves AI by improving its inputs, not its instructions"
-    description: "A unifying pattern across all of Tim's AI work: the highest-leverage improvements come from giving AI better information to work with, not from asking it to work harder. Dense prompts beat verbose ones. Pre-resolved data beats raw UUIDs. And screenshots beat test assertions for visual verification. The thread is always: upgrade the signal, not the receiver."
+    description: "A unifying pattern across all of Tim's AI work: the highest-leverage improvements come from giving AI better information to work with, not from asking it to work harder. Dense prompts beat verbose ones. Pre-resolved data beats raw UUIDs. And screenshots beat test assertions for visual verification. The thread is always: upgrade the signal, not the receiver. The contextual decompression research formalizes this as a general principle: I(output) = f(density of signal, richness of receiver context)."
     status: active
     first_noticed: 2026-03-14
     last_updated: 2026-03-14
@@ -49,6 +49,8 @@ threads:
         detail: "Dense prompts activate richer model knowledge than verbose ones"
       - post: translate-before-you-prompt
         detail: "Resolved human-readable data beats raw UUIDs as prompt input"
+      - post: contextual-decompression
+        detail: "The full research framework: biology solved the input problem by making receivers smarter, not signals bigger"
     strength: strong
 
   - id: density-over-volume
@@ -116,6 +118,14 @@ connections:
     description: "The remaining-skill post takes the density research and the visual feedback loop to their logical conclusion: as AI handles more implementation, the human role narrows to dense directional specification and output evaluation. The density research tells us HOW to specify (densely, conceptually). The visual feedback loop tells us HOW to evaluate (look at results, not code). Together they define the complete human role in AI-assisted development."
     discovered: 2026-03-14
     tags: [future-of-work, prompt-engineering, ai-patterns]
+
+  - id: contextual-decompression-unifies-blog
+    title: "Contextual decompression is the theoretical foundation for every other post"
+    from: contextual-decompression
+    to: the-remaining-skill
+    description: "The contextual decompression post is the keystone. Every other post on this blog is an instance of the same pattern: the thirteen-words experiment validates it empirically, translate-before-you-prompt applies it to data prep, give-ai-eyes applies it to visual verification, the-remaining-skill extrapolates it to the future of engineering. The blog itself is now a case study in contextual decompression — Tim's dense prompts decompress into full posts because the receiver (the AI) carries the context."
+    discovered: 2026-03-14
+    tags: [research, information-theory, ai-patterns, meta]
 
 predictions:
   - id: autonomous-content-pipeline
