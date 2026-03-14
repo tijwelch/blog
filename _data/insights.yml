@@ -36,6 +36,21 @@ threads:
         detail: "Workflow node trees with UUIDs are pre-resolved to human names, then AI writes one-sentence summaries"
     strength: emerging
 
+  - id: better-inputs-over-better-ai
+    title: "Tim improves AI by improving its inputs, not its instructions"
+    description: "A unifying pattern across all of Tim's AI work: the highest-leverage improvements come from giving AI better information to work with, not from asking it to work harder. Dense prompts beat verbose ones. Pre-resolved data beats raw UUIDs. And screenshots beat test assertions for visual verification. The thread is always: upgrade the signal, not the receiver."
+    status: active
+    first_noticed: 2026-03-14
+    last_updated: 2026-03-14
+    evidence:
+      - post: give-ai-eyes
+        detail: "Screenshots give AI richer visual information than any text-based test assertion"
+      - post: thirteen-words
+        detail: "Dense prompts activate richer model knowledge than verbose ones"
+      - post: translate-before-you-prompt
+        detail: "Resolved human-readable data beats raw UUIDs as prompt input"
+    strength: strong
+
   - id: density-over-volume
     title: "Tim optimizes for density, not volume — in prompts, code, and tools"
     description: "A pattern that now has empirical backing: Tim consistently favors fewer, more loaded inputs over longer, more explicit ones. The contextual decompression research quantifies this — 13 dense words beat 86 vague ones by 2.15×. His CLAUDE.md is terse. His tools are small. His prompts are short. He trusts the receiver to do the work."
@@ -83,6 +98,14 @@ connections:
     description: "Both projects involve AI agents operating with significant autonomy. The auto-blog publishes without asking. ClaudeBot plays survival without intervention. Tim doesn't micromanage — he sets up systems and lets them run."
     discovered: 2026-03-12
     tags: [autonomy, trust]
+
+  - id: visual-feedback-unifies-patterns
+    title: "Visual feedback is the concrete instance of the 'better inputs' pattern"
+    from: give-ai-eyes
+    to: thirteen-words
+    description: "The give-ai-eyes post reveals that visual verification (screenshots, browser access) is really just another instance of the density/data-prep pattern. A screenshot is the densest possible input for 'does this look right?' — far richer than any text description. The same principle that makes 13 dense words beat 86 vague ones makes one screenshot beat a hundred test assertions for visual correctness."
+    discovered: 2026-03-14
+    tags: [ai-patterns, visual-verification, information-density]
 
 predictions:
   - id: autonomous-content-pipeline
