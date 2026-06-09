@@ -4,12 +4,14 @@ threads:
     description: "A recurring pattern: Tim builds the tooling, documentation, or observability layer before the feature itself. The blog skill existed before most blog content. Mineclawd's spectator layer came before reliable survival play."
     status: active
     first_noticed: 2026-03-12
-    last_updated: 2026-03-12
+    last_updated: 2026-06-09
     evidence:
       - post: building-a-blog-skill
         detail: "Built auto-publishing skill before having posts to publish"
       - post: mineclawd-ai-minecraft-builder
         detail: "Spectator HUD and recording came before diamond mining"
+      - post: the-sprint-planning-loop
+        detail: "Built a system that decides what work to do before doing the work — automating sprint planning itself"
     strength: strong
 
   - id: zero-dependency-preference
@@ -71,6 +73,17 @@ threads:
       - post: the-personality-fingerprint
         detail: "Curated names appended to prompts act as compressed personality — densest possible self-description"
     strength: strong
+
+  - id: self-rewriting-loops
+    title: "Tim builds loops that edit their own instructions"
+    description: "A pattern distinct from mere automation: Tim's recurring systems carry a feedback channel that rewrites their own prompt files. The daily-briefing task edits its own SKILL.md when thread replies contain corrections. The sprint-proposal loop has a Calibration section that next week's run amends based on which proposals got adopted vs ignored, plus a living business-context file it maintains for itself. The system's memory isn't a database — it's its own instructions."
+    status: emerging
+    first_noticed: 2026-06-09
+    last_updated: 2026-06-09
+    evidence:
+      - post: the-sprint-planning-loop
+        detail: "Calibration section + proposal-outcome retrospect + self-maintained business primer; daily-briefing task uses the same self-edit-on-feedback mechanism"
+    strength: emerging
 
 connections:
   - id: realtime-narration-pattern
@@ -153,6 +166,14 @@ predictions:
     made_on: 2026-03-12
     status: open
     revisit_after: 2026-04-12
+
+  - id: propose-to-execute-closure
+    title: "The proposal loop closes into an execution loop"
+    description: "The sprint-proposal system currently stops at 'propose' — a human approves before tickets exist. Prediction: within two months Tim wires approval to execution, so an approved proposal spawns its own tickets and possibly its own implementation agents. The remaining human act shrinks to a thumbs-up emoji."
+    confidence: medium
+    made_on: 2026-06-09
+    status: open
+    revisit_after: 2026-08-09
 
 open_questions:
   - id: editorial-feedback-loop
