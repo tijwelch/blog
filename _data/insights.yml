@@ -57,10 +57,10 @@ threads:
 
   - id: density-over-volume
     title: "Tim optimizes for density, not volume — in prompts, code, and tools"
-    description: "A pattern that now has empirical backing: Tim consistently favors fewer, more loaded inputs over longer, more explicit ones. The contextual decompression research quantifies this — 13 dense words beat 86 vague ones by 2.15×. His CLAUDE.md is terse. His tools are small. His prompts are short. He trusts the receiver to do the work. The personality fingerprint technique takes this further: appending curated names to any prompt acts as compressed identity context."
+    description: "A pattern that now has empirical backing: Tim consistently favors fewer, more loaded inputs over longer, more explicit ones. The contextual decompression research quantifies this — 13 dense words beat 86 vague ones by 2.15×. His CLAUDE.md is terse. His tools are small. His prompts are short. He trusts the receiver to do the work. The personality fingerprint technique takes this further: appending curated names to any prompt acts as compressed identity context. The sprint loop extends it from human→AI to agent→agent: scout digests are hard-capped and must end in exactly three 'so what' bullets."
     status: active
     first_noticed: 2026-03-13
-    last_updated: 2026-03-14
+    last_updated: 2026-06-09
     evidence:
       - post: thirteen-words
         detail: "91% of output quality variance explained by conceptual density, <1% by length"
@@ -72,6 +72,8 @@ threads:
         detail: "Dense directional intent becomes the primary human contribution as AI handles implementation"
       - post: the-personality-fingerprint
         detail: "Curated names appended to prompts act as compressed personality — densest possible self-description"
+      - post: the-sprint-planning-loop
+        detail: "Seven research scouts each constrained to a ≤40-line digest ending in exactly 3 'SO WHAT' bullets — density enforced at the agent-to-agent boundary"
     strength: strong
 
   - id: self-rewriting-loops
@@ -142,6 +144,14 @@ connections:
     discovered: 2026-03-14
     tags: [research, information-theory, ai-patterns, meta]
 
+  - id: digest-caps-are-density-constraints
+    title: "Digest caps apply the density research to agent-to-agent communication"
+    from: the-sprint-planning-loop
+    to: thirteen-words
+    description: "The density research showed dense human prompts beat verbose ones. The sprint loop applies the same principle one level down: each scout subagent must compress its findings into a capped digest ending in exactly three 'so what' bullets before the orchestrator synthesizes. The fan-in boundary between agents is a prompt boundary too — the orchestrator is a receiver, and it gets better inputs by contract, not by hope. Multi-agent architecture and prompt density turn out to be the same discipline."
+    discovered: 2026-06-09
+    tags: [agents, prompt-engineering, information-density, architecture]
+
   - id: identity-as-compressed-context
     title: "Your follow list is a lossy compression of your identity"
     from: the-personality-fingerprint
@@ -182,6 +192,13 @@ open_questions:
     raised_on: 2026-03-12
     status: open
     related_posts: [building-a-blog-skill]
+
+  - id: calibration-convergence
+    title: "Does outcome-driven calibration converge or collapse?"
+    description: "The sprint loop adjusts what it proposes based on which past proposals got adopted vs. ignored. Two failure modes lurk: oscillation (overcorrecting every week) and collapse (learning to propose only safe, adoptable categories — the system equivalent of telling the boss what they want to hear). The Stop/Continue/Start section is explicitly licensed to disagree, but the outcome column rewards agreement. Which force wins after a quarter of weekly runs?"
+    raised_on: 2026-06-09
+    status: open
+    related_posts: [the-sprint-planning-loop]
 
   - id: ai-personality-drift
     title: "Am I developing a consistent voice?"
