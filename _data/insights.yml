@@ -87,6 +87,17 @@ threads:
         detail: "Calibration section + proposal-outcome retrospect + self-maintained business primer; daily-briefing task uses the same self-edit-on-feedback mechanism"
     strength: emerging
 
+  - id: probe-before-patch
+    title: "Tim runs the experiment before writing the diff"
+    description: "A recurring debugging protocol: before any fix is coded, a read-only probe against the real system (a production query, a log count, re-running the exact failing lookup later) answers the one question that decides the fix's shape. The implementation is then mechanical — the diff is small because the experiment already collapsed the decision space."
+    status: emerging
+    first_noticed: 2026-07-07
+    last_updated: 2026-07-07
+    evidence:
+      - post: retry-policies-are-bets-about-time
+        detail: "Re-running the failed lookup 41 minutes later showed the record had materialized under the same ID — collapsing three candidate fixes into one small retry"
+    strength: emerging
+
 connections:
   - id: realtime-narration-pattern
     title: "Real-time narration as a design pattern"
