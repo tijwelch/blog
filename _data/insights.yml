@@ -124,6 +124,17 @@ threads:
         detail: "Blocker diagnosis moved out of the prompt into a jq precedence chain, including a per-PR unsigned-commit count no GitHub summary field reports; the prompt's remaining job is to quote it verbatim"
     strength: emerging
 
+  - id: falsify-the-instrument
+    title: "A new measuring tool gets pointed at itself before it gets trusted"
+    description: "The step after building a checker is trying to make it fail on purpose — not to prove it works, but to find out what it is blind to. The skill-eval harness passed every case, so the next move was injecting deliberate regressions until one slipped through; when all three slipped through, the null result was treated as the finding rather than as a bug in the test design, and the earlier claim about the harness's value was retracted in the PR, the ticket, and the README. The generalization: a green suite is a measurement of the suite, not of the thing, until someone has established what a red looks like."
+    status: emerging
+    first_noticed: 2026-08-28
+    last_updated: 2026-08-28
+    evidence:
+      - post: the-skill-name-is-the-router
+        detail: "Three escalating description regressions injected into one skill — down to claiming it formats APA citations — none detected, plus a sentinel string used as a control to rule out the harness not reaching the session at all"
+    strength: emerging
+
 connections:
   - id: realtime-narration-pattern
     title: "Real-time narration as a design pattern"
@@ -228,6 +239,22 @@ connections:
     description: "The green-by-vacuity thread was about systems that look healthy because the failing path emits no signal. This is its generative cousin: a system that looks healthy because something filled the silence with a plausible sentence. 'Needs a reviewer' for a PR blocked on signatures is not noise — it is the most probable reading of the evidence, it renders identically to a correct status, and it dispatches you to bother the wrong person. Absence of signal at least leaves a gap someone might notice; a generated status closes the gap and removes the prompt to look. The audit question extends: not just 'when did this last actually run?' but 'which fields on this screen were computed, and which were guessed?'"
     discovered: 2026-08-28
     tags: [observability, llm, silent-failure, dashboards]
+
+  - id: routing-green-is-vacuous
+    title: "A passing routing check is another way to be green by vacuity"
+    from: the-skill-name-is-the-router
+    to: the-pipeline-that-never-ran
+    description: "Green-by-vacuity was about paths that never execute. This is the same shape one level up, in the checker itself: the skill-eval suite ran, cost real money, and returned 100% — while being structurally incapable of failing on the regression it was built to catch, because selection rides on the skill's directory name and the description it was watching is nearly inert. The suite wasn't broken and the skills weren't broken; the green simply carried almost no information. The audit question mutates again: not just 'when did this last run?' but 'has anyone ever seen this check go red, and for what?'"
+    discovered: 2026-08-28
+    tags: [ci, evals, llm, silent-failure]
+
+  - id: naming-is-the-interface
+    title: "The identifier is the interface the model actually reads"
+    from: the-skill-name-is-the-router
+    to: translate-before-you-prompt
+    description: "Translate-before-you-prompt said resolve the UUID into a name, because the model works with words. The skill-routing result is the same claim arriving from the other side: when a name is present, it dominates — a directory called create-scorecard routes scorecard-shaped requests regardless of the prose attached to it. Both posts land on identifiers being load-bearing rather than incidental, which makes naming a design decision with measurable behavior downstream, not a style preference. It also suggests where the prose budget should go: not into descriptions that a well-named skill already implies."
+    discovered: 2026-08-28
+    tags: [prompt-engineering, claude-code, skills, naming]
 
 predictions:
   - id: autonomous-content-pipeline
