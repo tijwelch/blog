@@ -109,6 +109,19 @@ threads:
     evidence:
       - post: dead-code-waiting-for-data
         detail: "Recommended deleting the dead Time.zone line plus its resets block, and adding a test asserting Current.person= never touches Time.zone — encoding the decision, not the feature"
+      - post: a-model-asked-to-diagnose-will-return-a-diagnosis
+        detail: "The dashboard's progress bar was deleted rather than improved, on the grounds that no honest source for the number existed — better no bar than a fake one"
+    strength: emerging
+
+  - id: narrow-what-the-model-may-assert
+    title: "Tim keeps shrinking the set of facts a model is allowed to invent"
+    description: "The complement to the better-inputs thread. Better inputs upgrade the signal reaching the model; this move removes certain questions from the model's reach entirely. Merge blockers get computed in bash as an explicit precedence chain and quoted verbatim; project state is derived from member work items rather than written by the generator; the declared project list is human-owned and the refresh loop may populate it but never invent, rename, or reorder a row. The division of labor that keeps falling out: the model writes the words, the script writes the state."
+    status: emerging
+    first_noticed: 2026-08-28
+    last_updated: 2026-08-28
+    evidence:
+      - post: a-model-asked-to-diagnose-will-return-a-diagnosis
+        detail: "Blocker diagnosis moved out of the prompt into a jq precedence chain, including a per-PR unsigned-commit count no GitHub summary field reports; the prompt's remaining job is to quote it verbatim"
     strength: emerging
 
 connections:
@@ -199,6 +212,22 @@ connections:
     description: "The green-by-vacuity thread generalizes past CI. A dispatch-only release workflow and a per-request Time.zone assignment share a structure: both look like working capability, both have literally never produced an effect, and because nothing ever exercised them, nothing ever forced them to be true. The difference is what wakes them up. The pipeline waits for a human to reach for it during an incident; the dormant line waits for a column to stop being nil — which is worse, because no one decides to trigger it. Deadness that depends on data expires on a schedule nobody is watching. It sharpens the audit question from 'when did this last run?' to 'what would have to become true for this to start doing something, and does anyone know what it would do then?'"
     discovered: 2026-08-28
     tags: [reliability, dead-code, silent-failure, rails]
+
+  - id: better-inputs-has-a-limit
+    title: "Better inputs stop helping when the fact isn't in the inputs at all"
+    from: a-model-asked-to-diagnose-will-return-a-diagnosis
+    to: translate-before-you-prompt
+    description: "The whole blog has argued one direction: upgrade the signal, not the receiver. Resolve the UUIDs, hand over the screenshot, densify the prompt. The blocked-PR case is where that runs out. No amount of prompt craft recovers a fact that appears in no field of the input — GitHub's PR API simply does not report that a ruleset requires signed commits — and a model handed a hole fills it with the likeliest completion rather than reporting the hole. So the move inverts: instead of feeding the model better data to reason over, compute the answer outside it and let the model only phrase what was computed. Data prep and fact removal are the same instinct at two different depths — the question is whether the ground truth exists in the inputs at all."
+    discovered: 2026-08-28
+    tags: [ai-patterns, prompt-engineering, ground-truth, architecture]
+
+  - id: plausible-renders-like-true
+    title: "A confident wrong status is indistinguishable from a right one"
+    from: a-model-asked-to-diagnose-will-return-a-diagnosis
+    to: the-pipeline-that-never-ran
+    description: "The green-by-vacuity thread was about systems that look healthy because the failing path emits no signal. This is its generative cousin: a system that looks healthy because something filled the silence with a plausible sentence. 'Needs a reviewer' for a PR blocked on signatures is not noise — it is the most probable reading of the evidence, it renders identically to a correct status, and it dispatches you to bother the wrong person. Absence of signal at least leaves a gap someone might notice; a generated status closes the gap and removes the prompt to look. The audit question extends: not just 'when did this last actually run?' but 'which fields on this screen were computed, and which were guessed?'"
+    discovered: 2026-08-28
+    tags: [observability, llm, silent-failure, dashboards]
 
 predictions:
   - id: autonomous-content-pipeline
