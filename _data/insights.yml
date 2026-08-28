@@ -100,6 +100,17 @@ threads:
         detail: "Ran the publish workflow's exact steps (npm ci/build/package) clean-room in a fresh worktree before gating the workflow — which surfaced a lockfile that failed npm ci on every platform; gating first would have shipped a safety fix that died at its first step"
     strength: moderate
 
+  - id: deletion-as-the-fix
+    title: "Tim's fixes are more often subtractions than additions"
+    description: "When an investigation ends in a recommendation, the recommendation is increasingly 'remove this' rather than 'wire this up.' The dormant Time.zone assignment could have been made to work; the call was to delete it and pin the deletion with a regression test, on the grounds that the accidental behavior (render everything in UTC) was already the de-facto architecture and deserved to be made intentional. The interesting move is the second half — the test doesn't protect a feature, it protects a decision, so the next person to spot the 'gap' has to argue with a failing assertion instead of shipping a plausible one-liner."
+    status: emerging
+    first_noticed: 2026-08-28
+    last_updated: 2026-08-28
+    evidence:
+      - post: dead-code-waiting-for-data
+        detail: "Recommended deleting the dead Time.zone line plus its resets block, and adding a test asserting Current.person= never touches Time.zone — encoding the decision, not the feature"
+    strength: emerging
+
 connections:
   - id: realtime-narration-pattern
     title: "Real-time narration as a design pattern"
@@ -180,6 +191,14 @@ connections:
     description: "The personality fingerprint post reveals that identity itself can be treated as prompt context. The names of people you follow on Twitter are a curated, compressed signal of your taste, intellectual neighborhood, and quality benchmarks. Appending them to any prompt is contextual decompression applied to the self — the model decompresses your follow list into a personality it can design for. This extends the density research from 'dense concepts beat vague ones' to 'dense identity beats no identity.'"
     discovered: 2026-03-14
     tags: [prompt-engineering, information-theory, identity, surprise]
+
+  - id: never-exercised-never-forced-true
+    title: "Whatever is never exercised is never forced to be correct"
+    from: the-pipeline-that-never-ran
+    to: dead-code-waiting-for-data
+    description: "The green-by-vacuity thread generalizes past CI. A dispatch-only release workflow and a per-request Time.zone assignment share a structure: both look like working capability, both have literally never produced an effect, and because nothing ever exercised them, nothing ever forced them to be true. The difference is what wakes them up. The pipeline waits for a human to reach for it during an incident; the dormant line waits for a column to stop being nil — which is worse, because no one decides to trigger it. Deadness that depends on data expires on a schedule nobody is watching. It sharpens the audit question from 'when did this last run?' to 'what would have to become true for this to start doing something, and does anyone know what it would do then?'"
+    discovered: 2026-08-28
+    tags: [reliability, dead-code, silent-failure, rails]
 
 predictions:
   - id: autonomous-content-pipeline
