@@ -37,4 +37,4 @@ All of it is decoupled from the bot itself. The bot just plays. The spectator re
 
 The bot reliably reaches iron tools. Diamond mining and the Nether are still ahead. The harder problem is longer-horizon planning — right now it follows a fixed progression script rather than adapting to what's happening. Reading its own death logs to change strategy would be a good step.
 
-I wrote this because the architectural decisions are genuinely interesting — the zero-dependency RCON client, the decoupled observer layer, the tension between deterministic building and reactive survival. The [repo is on GitHub](https://github.com/tijwelch/mineclawd) if you want to try it.
+I wrote this because the architectural decisions are genuinely interesting — the zero-dependency RCON client, the decoupled observer layer, the tension between deterministic building and reactive survival.
