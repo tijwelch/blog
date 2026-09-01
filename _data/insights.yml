@@ -78,14 +78,16 @@ threads:
 
   - id: self-rewriting-loops
     title: "Tim builds loops that edit their own instructions"
-    description: "A pattern distinct from mere automation: Tim's recurring systems carry a feedback channel that rewrites their own prompt files. The daily-briefing task edits its own SKILL.md when thread replies contain corrections. The sprint-proposal loop has a Calibration section that next week's run amends based on which proposals got adopted vs ignored, plus a living business-context file it maintains for itself. The system's memory isn't a database — it's its own instructions."
-    status: emerging
+    description: "A pattern distinct from mere automation: Tim's recurring systems carry a feedback channel that rewrites their own prompt files. The daily-briefing task edits its own SKILL.md when thread replies contain corrections. The sprint-proposal loop has a Calibration section that next week's run amends based on which proposals got adopted vs ignored, plus a living business-context file it maintains for itself. The system's memory isn't a database — it's its own instructions. The newest instance adds a boundary: the self-edit channel can be scoped to heuristics only, append-only, with the prompt itself structurally out of reach."
+    status: active
     first_noticed: 2026-06-09
-    last_updated: 2026-06-09
+    last_updated: 2026-09-01
     evidence:
       - post: the-sprint-planning-loop
         detail: "Calibration section + proposal-outcome retrospect + self-maintained business primer; daily-briefing task uses the same self-edit-on-feedback mechanism"
-    strength: emerging
+      - post: the-agent-proposes-the-code-disposes
+        detail: "Curation agent revises its own operating heuristics weekly in an append-only calibration log — humans correct or revert by appending newer revisions — but is structurally barred from editing its own prompt"
+    strength: moderate
 
   - id: probe-before-patch
     title: "Tim runs the experiment before writing the diff"
@@ -122,6 +124,17 @@ threads:
     evidence:
       - post: a-model-asked-to-diagnose-will-return-a-diagnosis
         detail: "Blocker diagnosis moved out of the prompt into a jq precedence chain, including a per-PR unsigned-commit count no GitHub summary field reports; the prompt's remaining job is to quote it verbatim"
+    strength: emerging
+
+  - id: authority-split
+    title: "Guarantees live in tested code; judgment lives in the prompt"
+    description: "A division of labor for agent systems: the agent gets total freedom on the judgment side (open discovery, no signal allowlist) and zero authority on the outcome side — it proposes, and a single deterministic, tested service disposes. Every hard property (a human pin cannot be removed, churn per run is capped, hard exclusions are refused) is a theorem about code, not a prompt instruction, so it stays true regardless of what the model does. The complement of constraining the model: you don't need a cautious agent if the blast radius is owned by code."
+    status: emerging
+    first_noticed: 2026-09-01
+    last_updated: 2026-09-01
+    evidence:
+      - post: the-agent-proposes-the-code-disposes
+        detail: "Curation agent with open discovery but zero eviction authority; one enforcement service owns hard exclusions, verified-job-change retirement, rescoring, a hard cap with a 20% per-run churn ceiling, and 90-day human pins"
     strength: emerging
 
   - id: falsify-the-instrument
@@ -255,6 +268,14 @@ connections:
     description: "Translate-before-you-prompt said resolve the UUID into a name, because the model works with words. The skill-routing result is the same claim arriving from the other side: when a name is present, it dominates — a directory called create-scorecard routes scorecard-shaped requests regardless of the prose attached to it. Both posts land on identifiers being load-bearing rather than incidental, which makes naming a design decision with measurable behavior downstream, not a style preference. It also suggests where the prose budget should go: not into descriptions that a well-named skill already implies."
     discovered: 2026-08-28
     tags: [prompt-engineering, claude-code, skills, naming]
+
+  - id: words-vs-state-generalizes
+    title: "'The model writes the words, the script writes the state' scales from dashboards to agents"
+    from: the-agent-proposes-the-code-disposes
+    to: a-model-asked-to-diagnose-will-return-a-diagnosis
+    description: "The dashboard fix moved a read-only fact (why a PR is blocked) out of the model and into a script that computes it. The curation agent applies the same division to writes: the model may propose state transitions but never execute them — eviction, capping, and pin protection are owned by one tested service. Same principle at two privilege levels: anything with a computable ground truth gets computed, and anything with an irreversible consequence gets executed by code. The model's jurisdiction shrinks to phrasing on the read side and proposing on the write side."
+    discovered: 2026-09-01
+    tags: [agents, architecture, ground-truth, guardrails]
 
 predictions:
   - id: autonomous-content-pipeline
