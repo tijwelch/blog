@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 400" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="860" height="400" fill="#fafafa"/>
+
+  <!-- Agent box -->
+  <rect x="30" y="50" width="340" height="300" rx="10" fill="#ffffff" stroke="#999999" stroke-width="2" stroke-dasharray="7 5"/>
+  <text x="200" y="86" text-anchor="middle" font-size="19" font-weight="700" fill="#222222">The agent</text>
+  <text x="200" y="108" text-anchor="middle" font-size="13" fill="#777777">judgment — a prompt</text>
+
+  <text x="55" y="148" font-size="14" fill="#333333">• open discovery: propose anyone,</text>
+  <text x="68" y="168" font-size="14" fill="#333333">from any source it can reach</text>
+  <text x="55" y="198" font-size="14" fill="#333333">• every proposal carries a source</text>
+  <text x="68" y="218" font-size="14" fill="#333333">and a why, or it is rejected</text>
+  <text x="55" y="248" font-size="14" fill="#333333">• revises its heuristics in an</text>
+  <text x="68" y="268" font-size="14" fill="#333333">append-only calibration log</text>
+  <text x="55" y="302" font-size="14" font-weight="600" fill="#8a3333">• cannot evict, cannot unpin,</text>
+  <text x="68" y="322" font-size="14" font-weight="600" fill="#8a3333">cannot edit its own prompt</text>
+
+  <!-- Arrow -->
+  <line x1="370" y1="185" x2="482" y2="185" stroke="#444444" stroke-width="2.5"/>
+  <polygon points="482,185 468,178 468,192" fill="#444444"/>
+  <text x="428" y="165" text-anchor="middle" font-size="13" fill="#555555">proposals only</text>
+  <text x="428" y="215" text-anchor="middle" font-size="12" fill="#888888">(via the public API,</text>
+  <text x="428" y="231" text-anchor="middle" font-size="12" fill="#888888">like any other client)</text>
+
+  <!-- Service box -->
+  <rect x="490" y="50" width="340" height="300" rx="10" fill="#ffffff" stroke="#222222" stroke-width="3"/>
+  <text x="660" y="86" text-anchor="middle" font-size="19" font-weight="700" fill="#222222">The enforcement service</text>
+  <text x="660" y="108" text-anchor="middle" font-size="13" fill="#777777">authority — tested code</text>
+
+  <text x="515" y="145" font-size="14" fill="#333333">• the only thing allowed to evict</text>
+  <text x="515" y="173" font-size="14" fill="#333333">• refuses hard-excluded people</text>
+  <text x="515" y="201" font-size="14" fill="#333333">• retires verified job-changers</text>
+  <text x="515" y="229" font-size="14" fill="#333333">• rescores on recency + depth</text>
+  <text x="515" y="257" font-size="14" fill="#333333">• hard cap, ≤20% churn per run</text>
+  <text x="515" y="292" font-size="14" font-weight="600" fill="#1f5c33">• never removes a human pin</text>
+  <text x="528" y="312" font-size="14" font-weight="600" fill="#1f5c33">(flags hold for 90 days)</text>
+
+  <text x="430" y="380" text-anchor="middle" font-size="13" fill="#666666" font-style="italic">State changes flow only through the service. Nothing the agent says can move the list directly.</text>
+</svg>
