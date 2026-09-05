@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 470" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="860" height="470" fill="#fafafa"/>
+
+  <text x="430" y="38" text-anchor="middle" font-size="15" font-weight="600" fill="#555555">create(:person, :contact, account: A)</text>
+
+  <line x1="430" y1="52" x2="248" y2="86" stroke="#444444" stroke-width="2"/>
+  <line x1="430" y1="52" x2="612" y2="86" stroke="#444444" stroke-width="2"/>
+  <polygon points="244,88 258,76 260,90" fill="#444444"/>
+  <polygon points="616,88 600,90 602,76" fill="#444444"/>
+
+  <!-- Person -->
+  <rect x="60" y="92" width="330" height="106" rx="10" fill="#ffffff" stroke="#222222" stroke-width="2.5"/>
+  <text x="225" y="126" text-anchor="middle" font-size="18" font-weight="700" fill="#222222">Person</text>
+  <text x="225" y="152" text-anchor="middle" font-size="14" fill="#333333">account_id = <tspan font-weight="700">A</tspan></text>
+  <text x="225" y="177" text-anchor="middle" font-size="12.5" fill="#777777">the account you asked for</text>
+
+  <!-- Contact -->
+  <rect x="470" y="92" width="330" height="106" rx="10" fill="#ffffff" stroke="#8a3333" stroke-width="2.5" stroke-dasharray="7 5"/>
+  <text x="635" y="126" text-anchor="middle" font-size="18" font-weight="700" fill="#8a3333">Contact</text>
+  <text x="635" y="152" text-anchor="middle" font-size="14" fill="#8a3333">account_id = <tspan font-weight="700">B</tspan></text>
+  <text x="635" y="177" text-anchor="middle" font-size="12.5" fill="#a06666">a brand new account it minted itself</text>
+
+  <text x="430" y="140" text-anchor="middle" font-size="13" fill="#999999">same record,</text>
+  <text x="430" y="158" text-anchor="middle" font-size="13" fill="#999999">two halves</text>
+
+  <text x="430" y="232" text-anchor="middle" font-size="13" fill="#777777">a state production can never produce</text>
+
+  <line x1="120" y1="254" x2="740" y2="254" stroke="#dddddd" stroke-width="1.5"/>
+
+  <!-- Guard -->
+  <rect x="120" y="280" width="620" height="128" rx="10" fill="#ffffff" stroke="#999999" stroke-width="2"/>
+  <text x="430" y="310" text-anchor="middle" font-size="14" font-weight="600" fill="#555555">the do-not-contact guard, tested against that data</text>
+  <text x="430" y="343" text-anchor="middle" font-size="14.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" fill="#222222">Contact.where(account_id: <tspan font-weight="700">A</tspan>, do_not_contact: true)</text>
+  <text x="430" y="378" text-anchor="middle" font-size="16" font-weight="700" fill="#8a3333">matches nobody — so it excludes nobody</text>
+
+  <text x="430" y="445" text-anchor="middle" font-size="13.5" fill="#555555">A test asserting "this person is refused" fails. A test asserting "this person is allowed" passes.</text>
+</svg>
