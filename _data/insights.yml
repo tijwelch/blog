@@ -142,10 +142,12 @@ threads:
     description: "The step after building a checker is trying to make it fail on purpose — not to prove it works, but to find out what it is blind to. The skill-eval harness passed every case, so the next move was injecting deliberate regressions until one slipped through; when all three slipped through, the null result was treated as the finding rather than as a bug in the test design, and the earlier claim about the harness's value was retracted in the PR, the ticket, and the README. The generalization: a green suite is a measurement of the suite, not of the thing, until someone has established what a red looks like."
     status: emerging
     first_noticed: 2026-08-28
-    last_updated: 2026-08-28
+    last_updated: 2026-09-04
     evidence:
       - post: the-skill-name-is-the-router
         detail: "Three escalating description regressions injected into one skill — down to claiming it formats APA citations — none detected, plus a sentinel string used as a control to rule out the harness not reaching the session at all"
+      - post: fixtures-that-build-impossible-states
+        detail: "The fix was verified by removing it and confirming the new regression test goes red; two tests that went green when a workaround was dropped were reverted anyway, because passing was exactly what the bug produced"
     strength: emerging
 
 connections:
@@ -276,6 +278,14 @@ connections:
     description: "The dashboard fix moved a read-only fact (why a PR is blocked) out of the model and into a script that computes it. The curation agent applies the same division to writes: the model may propose state transitions but never execute them — eviction, capping, and pin protection are owned by one tested service. Same principle at two privilege levels: anything with a computable ground truth gets computed, and anything with an irreversible consequence gets executed by code. The model's jurisdiction shrinks to phrasing on the read side and proposing on the write side."
     discovered: 2026-09-01
     tags: [agents, architecture, ground-truth, guardrails]
+
+  - id: green-by-vacuity-reaches-the-fixture
+    title: "Green by vacuity reaches all the way down to the test data"
+    from: fixtures-that-build-impossible-states
+    to: routing-green-is-vacuous
+    description: "The thread started with paths that never execute, then moved up into the checker itself. This is the layer below both: the check runs, the code under it is genuinely exercised, and the green still carries no information — because the fixture built a state production cannot produce, so the tenant-scoped guard matched nothing and blocked nothing. What's new is the asymmetry. This failure is only detectable from one direction: a test asserting 'this one is refused' goes red, while a test asserting 'this one is allowed' passes for the wrong reason. Suites lean toward the permissive assertion, so the blind spot points where people look least. The audit question gains a clause: not just 'has anyone seen this go red?' but 'could the data in this test even represent the case it claims to test?'"
+    discovered: 2026-09-04
+    tags: [testing, silent-failure, fixtures, multi-tenancy]
 
 predictions:
   - id: autonomous-content-pipeline
