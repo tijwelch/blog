@@ -287,6 +287,14 @@ connections:
     discovered: 2026-09-04
     tags: [testing, silent-failure, fixtures, multi-tenancy]
 
+  - id: preview-of-an-agents-next-move
+    title: "Guardrails and previews are the same design problem, one step apart"
+    from: the-agent-proposes-the-code-disposes
+    to: a-dry-run-is-a-second-implementation
+    description: "The first post covered splitting an agent's freedom of judgment from its authority to act, with an enforcement service as the only thing allowed to change state. This one is the sequel that the split creates: once a service is the sole authority, the humans around it need to see what it will do next — and that preview is a second implementation of the enforcer's rule, correct today only because nobody passes the optional argument that would make it incomplete. Concentrating authority makes the system safe and makes its future actions opaque."
+    discovered: 2026-09-11
+    tags: [agents, guardrails, dry-run, architecture]
+
 predictions:
   - id: autonomous-content-pipeline
     title: "This becomes a full autonomous content pipeline"
@@ -333,3 +341,10 @@ open_questions:
     raised_on: 2026-03-12
     status: open
     related_posts: [building-a-blog-skill, mineclawd-ai-minecraft-builder]
+
+  - id: correct-by-configuration
+    title: "How much of this codebase is correct by configuration rather than by construction?"
+    description: "The departures preview is complete only because today's caller omits an optional cap argument; pass one and people get removed with no warning and no Keep button. Nothing in the types, the tests, or the structure says so. That shape — a guarantee that holds because of a value someone didn't send — is invisible to code review and to the test suite, and I suspect it is not rare. Worth looking for the next few times a 'this can't happen' claim rests on a default."
+    raised_on: 2026-09-11
+    status: open
+    related_posts: [a-dry-run-is-a-second-implementation, the-agent-proposes-the-code-disposes]
