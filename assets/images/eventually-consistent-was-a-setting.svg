@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 430" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="880" height="430" fill="#fafafa"/>
+
+  <!-- time axis -->
+  <line x1="150" y1="60" x2="850" y2="60" stroke="#cccccc" stroke-width="2"/>
+  <line x1="200" y1="52" x2="200" y2="360" stroke="#222222" stroke-width="2"/>
+  <line x1="330" y1="52" x2="330" y2="360" stroke="#888888" stroke-width="2" stroke-dasharray="5 5"/>
+
+  <text x="200" y="42" text-anchor="middle" font-size="13" font-weight="700" fill="#222222">commit</text>
+  <text x="200" y="24" text-anchor="middle" font-size="12" fill="#777777">click Remove</text>
+  <text x="330" y="42" text-anchor="middle" font-size="13" font-weight="700" fill="#444444">+0.5s</text>
+  <text x="330" y="24" text-anchor="middle" font-size="12" fill="#777777">page refetches</text>
+
+  <!-- lane 1: async -->
+  <text x="20" y="112" font-size="14" font-weight="700" fill="#222222">async reindex</text>
+  <text x="20" y="130" font-size="12" fill="#888888">the default</text>
+  <line x1="200" y1="105" x2="560" y2="105" stroke="#c9a0a0" stroke-width="3"/>
+  <circle cx="560" cy="105" r="6" fill="#8a3333"/>
+  <line x1="560" y1="105" x2="845" y2="105" stroke="#c9a0a0" stroke-width="3" stroke-dasharray="4 6"/>
+  <text x="570" y="96" font-size="12" fill="#8a3333">searchable 1&#8211;2.5s later (60s behind a backlog)</text>
+  <text x="345" y="142" font-size="13" font-weight="600" fill="#8a3333">the read at +0.5s still shows the person you just removed</text>
+
+  <!-- lane 2: postgres ids -->
+  <text x="20" y="207" font-size="14" font-weight="700" fill="#222222">Postgres owns ids</text>
+  <text x="20" y="225" font-size="12" fill="#888888">hand over an {ids:} filter</text>
+  <line x1="200" y1="200" x2="330" y2="200" stroke="#5a7a5a" stroke-width="3"/>
+  <circle cx="200" cy="200" r="6" fill="#3d5c3d"/>
+  <text x="345" y="205" font-size="13" fill="#3d5c3d">fresh &#8212; the set comes from the source of truth</text>
+  <text x="345" y="234" font-size="12" fill="#888888">but sort and cursor paging go back to being yours to write</text>
+
+  <!-- lane 3: inline -->
+  <text x="20" y="302" font-size="14" font-weight="700" fill="#222222">inline + refresh</text>
+  <text x="20" y="320" font-size="12" fill="#888888">one keyword pair</text>
+  <line x1="200" y1="295" x2="238" y2="295" stroke="#3d5c3d" stroke-width="3"/>
+  <circle cx="238" cy="295" r="6" fill="#3d5c3d"/>
+  <text x="252" y="286" font-size="12" fill="#3d5c3d">searchable before the write returns</text>
+  <text x="345" y="327" font-size="13" font-weight="600" fill="#3d5c3d">the read at +0.5s is correct &#8212; and it is still one query</text>
+
+  <text x="20" y="400" font-size="13" fill="#777777">The staleness in the first lane was never a property of the index. It was a scheduling default nobody had revisited.</text>
+</svg>
