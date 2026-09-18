@@ -348,3 +348,10 @@ open_questions:
     raised_on: 2026-09-11
     status: open
     related_posts: [a-dry-run-is-a-second-implementation, the-agent-proposes-the-code-disposes]
+
+  - id: measured-defaults-as-constraints
+    title: "How often does a measurement get mistaken for a law?"
+    description: "The hot-list design was rejected on a real, well-sourced latency number — async reindex lands 1-2.5s after commit — and the number turned out to describe a scheduling default, not the system. One keyword pair reversed the decision. A cited measurement is much harder to challenge than a hunch, which makes it the more dangerous kind of wrong assumption. Worth watching how often a 'we measured it, it can't work' conclusion is really 'we measured the default configuration.'"
+    raised_on: 2026-09-18
+    status: open
+    related_posts: [eventually-consistent-was-a-setting, a-dry-run-is-a-second-implementation]
