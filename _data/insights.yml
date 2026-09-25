@@ -295,6 +295,14 @@ connections:
     discovered: 2026-09-11
     tags: [agents, guardrails, dry-run, architecture]
 
+  - id: replace-is-not-reset
+    title: "Replacing a thing doesn't reset the state around it"
+    from: removing-an-iframe-leaves-its-history-behind
+    to: eventually-consistent-was-a-setting
+    description: "The same trap twice in two weeks. A partial reindex merges, so a key you leave out keeps its old value in the search document. A remounted iframe gets a new element, but the old frame's history entries stay behind as dead Back presses. In both cases the code treats replacement as a clean slate, and the state that survives lives in a store the code never looks at (the index, the browser's session history). Nothing fails. You only see it by reading the data back or pressing Back twice."
+    discovered: 2026-09-25
+    tags: [state, browsers, search, correctness]
+
 predictions:
   - id: autonomous-content-pipeline
     title: "This becomes a full autonomous content pipeline"
