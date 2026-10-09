@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 340" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13">
+  <rect width="760" height="340" fill="#ffffff"/>
+  <text x="24" y="30" font-size="15" font-weight="600" fill="#222222">The same three events, handled two ways</text>
+
+  <text x="24" y="62" font-weight="600" fill="#444444">Trigger list</text>
+  <text x="400" y="62" font-weight="600" fill="#444444">Converge on state</text>
+
+  <g>
+    <rect x="24" y="76" width="180" height="34" rx="6" fill="#eef1f5" stroke="#9aa5b1"/>
+    <text x="114" y="98" text-anchor="middle" fill="#222222">B promoted to owner</text>
+    <text x="216" y="98" fill="#8a3333" font-size="12">no-ops: no calendar yet</text>
+
+    <rect x="24" y="130" width="180" height="34" rx="6" fill="#eef1f5" stroke="#9aa5b1"/>
+    <text x="114" y="152" text-anchor="middle" fill="#222222">B connects a calendar</text>
+    <text x="216" y="152" fill="#8a3333" font-size="12">nothing listens</text>
+
+    <rect x="24" y="184" width="180" height="34" rx="6" fill="#eef1f5" stroke="#9aa5b1"/>
+    <text x="114" y="206" text-anchor="middle" fill="#222222">A demoted from owner</text>
+    <text x="216" y="206" fill="#8a3333" font-size="12">nothing listens</text>
+
+    <rect x="24" y="246" width="336" height="34" rx="6" fill="#f7f7f7" stroke="#bbbbbb" stroke-dasharray="5 4"/>
+    <text x="192" y="268" text-anchor="middle" fill="#888888">only page: A's. The shareable link points at it.</text>
+  </g>
+
+  <line x1="382" y1="70" x2="382" y2="290" stroke="#dddddd"/>
+
+  <g>
+    <rect x="400" y="76" width="160" height="34" rx="6" fill="#eef1f5" stroke="#9aa5b1"/>
+    <text x="480" y="98" text-anchor="middle" fill="#222222">B promoted</text>
+    <rect x="400" y="130" width="160" height="34" rx="6" fill="#eef1f5" stroke="#9aa5b1"/>
+    <text x="480" y="152" text-anchor="middle" fill="#222222">B connects calendar</text>
+    <rect x="400" y="184" width="160" height="34" rx="6" fill="#eef1f5" stroke="#9aa5b1"/>
+    <text x="480" y="206" text-anchor="middle" fill="#222222">A demoted</text>
+
+    <path d="M560 93 L600 143" fill="none" stroke="#777777" stroke-width="1.5" marker-end="url(#a)"/>
+    <path d="M560 147 L600 147" fill="none" stroke="#777777" stroke-width="1.5" marker-end="url(#a)"/>
+    <path d="M560 201 L600 151" fill="none" stroke="#777777" stroke-width="1.5" marker-end="url(#a)"/>
+
+    <rect x="608" y="112" width="128" height="70" rx="6" fill="#e6f2ea" stroke="#5f9c72"/>
+    <text x="672" y="136" text-anchor="middle" fill="#3d5c3d" font-weight="600">reconcile</text>
+    <text x="672" y="154" text-anchor="middle" fill="#3d5c3d" font-size="12">desired host = f(state)</text>
+    <text x="672" y="170" text-anchor="middle" fill="#3d5c3d" font-size="12">make pages match</text>
+
+    <rect x="400" y="246" width="336" height="34" rx="6" fill="#e6f2ea" stroke="#5f9c72"/>
+    <text x="568" y="268" text-anchor="middle" fill="#3d5c3d">B's page exists, A's retired, link follows the rule</text>
+  </g>
+
+  <text x="24" y="318" fill="#555555">A missed event on the left stays wrong until someone notices. On the right, the next event fixes it.</text>
+  <defs>
+    <marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0 0 L8 4 L0 8 z" fill="#777777"/>
+    </marker>
+  </defs>
+</svg>
