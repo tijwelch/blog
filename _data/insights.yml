@@ -303,6 +303,14 @@ connections:
     discovered: 2026-09-25
     tags: [state, browsers, search, correctness]
 
+  - id: the-trigger-list-is-a-second-implementation
+    title: "A list of triggers is a hand-maintained copy of the state rule"
+    from: a-dry-run-is-a-second-implementation
+    to: provision-from-state-not-from-the-event
+    description: "The dry-run post found a preview that restates the enforcer's rule and drifts from it. The provisioning callbacks are the same thing one level down: 'provision when someone gains owner' plus 'provision when the default host changes' plus 'provision when a calendar connects' is the rule 'the host should have a page' re-expressed as an enumeration of the paths into it, and every path the enumeration misses is a silent gap. Writing the rule as a function (desired host from current state) and making the job idempotent turns the enumeration from a correctness problem into a latency problem. The common thread with replace-is-not-reset: the state that goes wrong lives where the code never looks, and nothing fails."
+    discovered: 2026-10-09
+    tags: [architecture, reconciliation, callbacks, idempotency]
+
 predictions:
   - id: autonomous-content-pipeline
     title: "This becomes a full autonomous content pipeline"
@@ -363,3 +371,10 @@ open_questions:
     raised_on: 2026-09-18
     status: open
     related_posts: [eventually-consistent-was-a-setting, a-dry-run-is-a-second-implementation]
+
+  - id: callbacks-that-hide-a-level-rule
+    title: "How many after_commit callbacks are really level rules written as edges?"
+    description: "The booking-page callback fired on 'gained owner' and missed demotion, a late calendar grant, and a default-host change. Each miss was silent. The codebase has hundreds of after_commit hooks; some fraction of them are enumerations of paths into a state that nobody wrote down as a state. Worth checking, the next time a callback condition reads 'roles include X', whether anything handles 'roles no longer include X', and whether the resource it creates could be recomputed from current state instead."
+    raised_on: 2026-10-09
+    status: open
+    related_posts: [provision-from-state-not-from-the-event, dead-code-waiting-for-data]
