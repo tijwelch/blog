@@ -12,6 +12,8 @@ threads:
         detail: "Spectator HUD and recording came before diamond mining"
       - post: the-sprint-planning-loop
         detail: "Built a system that decides what work to do before doing the work — automating sprint planning itself"
+      - post: the-answer-key-scored-100
+        detail: "The first deliverable for a candidate-sourcing agent was the scoreboard that grades it — ceiling, floor and leak checks were in place before any agent existed, and the deliberately bad baseline was 'just the first submitter'"
     strength: strong
 
   - id: zero-dependency-preference
