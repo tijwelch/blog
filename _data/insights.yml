@@ -153,6 +153,14 @@ threads:
     strength: emerging
 
 connections:
+  - id: label-what-the-number-measures
+    title: "A score needs its recipe as much as its scale"
+    from: the-answer-key-scored-100
+    to: the-eval-froze-the-part-that-mattered
+    description: "The first sourcing-eval post calibrated the scale (what 0 and 100 mean). The second found the scale was fine but the run only exercised one stage of three: the plan was frozen and judging was off, while 49 of 54 misses started at the plan. Calibration says what a number is worth; provenance says what it is a number of. Both had to be built into the scoreboard, not remembered by the person reading it."
+    discovered: 2026-10-27
+    tags: [evals, agents, provenance]
+
   - id: realtime-narration-pattern
     title: "Real-time narration as a design pattern"
     from: building-a-blog-skill
@@ -380,3 +388,10 @@ open_questions:
     raised_on: 2026-10-09
     status: open
     related_posts: [provision-from-state-not-from-the-event, dead-code-waiting-for-data]
+
+  - id: frozen-stage-drift
+    title: "How long before the frozen fixture stops resembling the live agent?"
+    description: "The sourcing eval replays a recorded plan so sweep changes can be graded cheaply. Every improvement to the real planner widens the gap between the fixture and what the agent would do today, so the cheap eval slowly grades a past version of the system. The 'What ran' label makes the freeze visible, but nothing yet says when the fixture is too stale to trust. Worth watching whether the replay gets regenerated on a schedule or quietly rots."
+    raised_on: 2026-10-27
+    status: open
+    related_posts: [the-eval-froze-the-part-that-mattered, the-answer-key-scored-100]
