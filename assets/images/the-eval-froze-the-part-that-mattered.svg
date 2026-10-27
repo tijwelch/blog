@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 330" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13">
+  <rect width="760" height="330" fill="#ffffff"/>
+  <text x="24" y="30" font-size="15" font-weight="600" fill="#222222">What one replay run actually exercised</text>
+
+  <!-- stage boxes -->
+  <g>
+    <rect x="24" y="70" width="200" height="86" rx="8" fill="#f1f1f1" stroke="#999999" stroke-dasharray="6 4"/>
+    <text x="124" y="98" text-anchor="middle" font-weight="600" fill="#444444">Plan</text>
+    <text x="124" y="120" text-anchor="middle" fill="#666666">strategies + queries</text>
+    <text x="124" y="140" text-anchor="middle" fill="#666666">FROZEN, read from a fixture</text>
+  </g>
+  <path d="M 228 113 L 266 113" stroke="#444444" stroke-width="1.5" marker-end="url(#a)"/>
+  <g>
+    <rect x="272" y="70" width="200" height="86" rx="8" fill="#e6f2ea" stroke="#5f9c72" stroke-width="1.5"/>
+    <text x="372" y="98" text-anchor="middle" font-weight="600" fill="#2f5e3d">Sweep</text>
+    <text x="372" y="120" text-anchor="middle" fill="#2f5e3d">runs the queries</text>
+    <text x="372" y="140" text-anchor="middle" fill="#2f5e3d">LIVE, branch code</text>
+  </g>
+  <path d="M 476 113 L 514 113" stroke="#444444" stroke-width="1.5" marker-end="url(#a)"/>
+  <g>
+    <rect x="520" y="70" width="216" height="86" rx="8" fill="#f1f1f1" stroke="#999999" stroke-dasharray="6 4"/>
+    <text x="628" y="98" text-anchor="middle" font-weight="600" fill="#444444">Judge + rank</text>
+    <text x="628" y="120" text-anchor="middle" fill="#666666">score each candidate</text>
+    <text x="628" y="140" text-anchor="middle" fill="#666666">OFF</text>
+  </g>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#444444"/>
+    </marker>
+  </defs>
+
+  <!-- where misses come from -->
+  <rect x="24" y="186" width="200" height="54" rx="6" fill="#fbe9e7" stroke="#c0574a"/>
+  <text x="124" y="208" text-anchor="middle" font-weight="600" fill="#8a3329">49 of 54 misses</text>
+  <text x="124" y="227" text-anchor="middle" fill="#8a3329">start here</text>
+  <line x1="124" y1="160" x2="124" y2="184" stroke="#c0574a" stroke-width="1.5"/>
+
+  <rect x="272" y="186" width="200" height="54" rx="6" fill="#ffffff" stroke="#5f9c72"/>
+  <text x="372" y="208" text-anchor="middle" font-weight="600" fill="#2f5e3d">the only stage a</text>
+  <text x="372" y="227" text-anchor="middle" fill="#2f5e3d">change can move</text>
+  <line x1="372" y1="160" x2="372" y2="184" stroke="#5f9c72" stroke-width="1.5"/>
+
+  <!-- result -->
+  <text x="24" y="282" font-weight="600" fill="#222222">The score it produced:</text>
+  <text x="190" y="282" fill="#444444">baseline 11.0%, run-to-run swing ±1.6. A real fix to the sweep: 11.9%.</text>
+  <text x="24" y="306" fill="#666666">Same code, honest number, and it could not have told you much either way.</text>
+</svg>
