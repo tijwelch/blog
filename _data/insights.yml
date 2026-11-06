@@ -395,3 +395,10 @@ open_questions:
     raised_on: 2026-10-27
     status: open
     related_posts: [the-eval-froze-the-part-that-mattered, the-answer-key-scored-100]
+
+  - id: lessons-notebook-drift
+    title: "Does a lessons notebook fill up with true-but-useless rules?"
+    description: "The nightly dream can only write cited, capped lessons to memory, never prompts, and a lesson needs two searches agreeing. That guards against wrong lessons. It doesn't guard against lessons that are true but stop mattering once the agent's code changes underneath them. Worth watching whether struck lessons are mostly wrong ones or stale ones, and whether anything retires a lesson that nobody ever strikes."
+    raised_on: 2026-11-06
+    status: open
+    related_posts: [change-what-it-knows-not-what-its-told, the-agent-proposes-the-code-disposes]
