@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13">
+  <rect width="760" height="360" fill="#ffffff"/>
+  <text x="24" y="30" font-size="15" font-weight="600" fill="#222222">Where a nightly self-review is allowed to write</text>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#444444"/>
+    </marker>
+    <marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5f9c72"/>
+    </marker>
+  </defs>
+
+  <!-- evidence inputs -->
+  <rect x="24" y="62" width="200" height="74" rx="6" fill="#e6f2ea" stroke="#5f9c72"/>
+  <text x="124" y="86" text-anchor="middle" font-weight="600" fill="#2f5e3d">Counts as evidence</text>
+  <text x="124" y="106" text-anchor="middle" fill="#2f5e3d">a person overruled it,</text>
+  <text x="124" y="124" text-anchor="middle" fill="#2f5e3d">or a run was recorded failing</text>
+
+  <rect x="24" y="152" width="200" height="74" rx="6" fill="#f1f1f1" stroke="#999999" stroke-dasharray="6 4"/>
+  <text x="124" y="176" text-anchor="middle" font-weight="600" fill="#444444">Never enough alone</text>
+  <text x="124" y="196" text-anchor="middle" fill="#666666">the agent's own critique</text>
+  <text x="124" y="214" text-anchor="middle" fill="#666666">of its work</text>
+
+  <!-- dream -->
+  <rect x="272" y="104" width="180" height="80" rx="8" fill="#ffffff" stroke="#444444" stroke-width="1.5"/>
+  <text x="362" y="134" text-anchor="middle" font-weight="600" fill="#222222">Nightly dream</text>
+  <text x="362" y="154" text-anchor="middle" fill="#666666">needs 2 searches agreeing</text>
+  <text x="362" y="172" text-anchor="middle" fill="#666666">max 3 new lessons a night</text>
+  <path d="M 228 99 L 268 130" stroke="#444444" stroke-width="1.5" marker-end="url(#a)"/>
+  <path d="M 228 189 L 268 160" stroke="#999999" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#a)"/>
+
+  <!-- told -->
+  <rect x="500" y="56" width="236" height="96" rx="8" fill="#f1f1f1" stroke="#999999" stroke-dasharray="6 4"/>
+  <text x="618" y="82" text-anchor="middle" font-weight="600" fill="#444444">What a run is TOLD</text>
+  <text x="618" y="104" text-anchor="middle" fill="#666666">prompts, settings, tools</text>
+  <text x="618" y="124" text-anchor="middle" fill="#666666">changes ship as reviewed releases</text>
+  <text x="618" y="142" text-anchor="middle" fill="#8a3329" font-weight="600">dream cannot write here</text>
+
+  <!-- knows -->
+  <rect x="500" y="172" width="236" height="104" rx="8" fill="#e6f2ea" stroke="#5f9c72" stroke-width="1.5"/>
+  <text x="618" y="198" text-anchor="middle" font-weight="600" fill="#2f5e3d">What a run KNOWS</text>
+  <text x="618" y="220" text-anchor="middle" fill="#2f5e3d">a shared lessons notebook</text>
+  <text x="618" y="240" text-anchor="middle" fill="#2f5e3d">each lesson cites its evidence</text>
+  <text x="618" y="260" text-anchor="middle" fill="#2f5e3d">struck without a release</text>
+  <path d="M 456 160 L 496 200" stroke="#5f9c72" stroke-width="2" marker-end="url(#g)"/>
+
+  <text x="24" y="320" fill="#666666">Scope: how the agent works (planning, sources, tools). Not who the team likes; that stays per search.</text>
+</svg>
