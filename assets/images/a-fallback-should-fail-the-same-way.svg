@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 330" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13">
+  <rect width="760" height="330" fill="#ffffff"/>
+  <text x="24" y="30" font-size="15" font-weight="600" fill="#222222">What the console shows when you tap a featured server</text>
+
+  <text x="200" y="62" text-anchor="middle" font-weight="600" fill="#444444">Backup DNS = a public resolver</text>
+  <text x="560" y="62" text-anchor="middle" font-weight="600" fill="#444444">Backup DNS = a second redirect server</text>
+
+  <!-- left column -->
+  <rect x="24" y="78" width="352" height="62" rx="6" fill="#e6f2ea" stroke="#5f9c72"/>
+  <text x="200" y="102" text-anchor="middle" font-weight="600" fill="#2f5e3d">Redirect menu appears</text>
+  <text x="200" y="122" text-anchor="middle" fill="#2f5e3d">the redirect is working</text>
+
+  <rect x="24" y="150" width="352" height="62" rx="6" fill="#fdecea" stroke="#c0665a"/>
+  <text x="200" y="174" text-anchor="middle" font-weight="600" fill="#8a3a30">The real server loads</text>
+  <text x="200" y="194" text-anchor="middle" fill="#8a3a30">looks normal; the redirect failed silently</text>
+
+  <rect x="24" y="222" width="352" height="62" rx="6" fill="#f1f1f1" stroke="#999999" stroke-dasharray="6 4"/>
+  <text x="200" y="246" text-anchor="middle" font-weight="600" fill="#666666">Can't connect</text>
+  <text x="200" y="266" text-anchor="middle" fill="#666666">almost never happens: the backup covers it</text>
+
+  <!-- right column -->
+  <rect x="384" y="78" width="352" height="62" rx="6" fill="#e6f2ea" stroke="#5f9c72"/>
+  <text x="560" y="102" text-anchor="middle" font-weight="600" fill="#2f5e3d">Redirect menu appears</text>
+  <text x="560" y="122" text-anchor="middle" fill="#2f5e3d">the redirect is working</text>
+
+  <rect x="384" y="150" width="352" height="62" rx="6" fill="#fff6e0" stroke="#c49a3a"/>
+  <text x="560" y="174" text-anchor="middle" font-weight="600" fill="#7a5c14">The real server loads</text>
+  <text x="560" y="194" text-anchor="middle" fill="#7a5c14">the trick itself is broken, not one server</text>
+
+  <rect x="384" y="222" width="352" height="62" rx="6" fill="#fdecea" stroke="#c0665a"/>
+  <text x="560" y="246" text-anchor="middle" font-weight="600" fill="#8a3a30">Can't connect</text>
+  <text x="560" y="266" text-anchor="middle" fill="#8a3a30">both redirect servers are down: a loud failure</text>
+
+  <text x="380" y="314" text-anchor="middle" fill="#666666">Same three outcomes. Only the right-hand setup lets each one mean a single thing.</text>
+</svg>
