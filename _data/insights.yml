@@ -321,6 +321,14 @@ connections:
     discovered: 2026-10-09
     tags: [architecture, reconciliation, callbacks, idempotency]
 
+  - id: fallback-changes-the-answer
+    title: "A fallback that answers differently is a silent-failure generator"
+    from: a-fallback-should-fail-the-same-way
+    to: a-model-asked-to-diagnose-will-return-a-diagnosis
+    description: "The plausible-status connection was about a generator filling a gap with the likeliest sentence. A heterogeneous fallback does the same thing with no model involved: a public resolver behind a DNS redirect returns the real address, which is exactly the correct behavior for the resolver and exactly the wrong outcome for the user, and the screen looks normal. The repair isn't a better primary but a homogeneous backup, one that either gives the same answer or fails loudly, so each observation maps back to a single cause. It adds a question to the green-by-vacuity audit: not just 'did anything answer?' but 'could the thing that answered have been the backup, and would I know?'"
+    discovered: 2026-11-13
+    tags: [reliability, silent-failure, debugging, networking]
+
 predictions:
   - id: autonomous-content-pipeline
     title: "This becomes a full autonomous content pipeline"
